@@ -1,0 +1,267 @@
+* {
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
+
+}
+
+body {
+  background-color: #434343;
+  font-weight: 300;
+  font-family: 'Open Sans',sans-serif;
+  font-size: 0.9em;
+  color:white;
+}
+
+ul{
+    list-style: none;
+}
+
+/**
+ *  TOP HEADER
+ **/
+
+.top-header {
+  background-color: #DF5748;
+  box-shadow: 0px 2px 10px #333333;
+  align-items: center;
+  display: flex;
+  height:60px;
+  color:#FFFFFF;
+  position: fixed;
+  width:100%;
+  top:0px;
+}
+
+.top-header a{
+  color:#F9F9F9;
+  text-decoration: none;
+  margin-left: 20px;
+  font-weight: 400;
+}
+
+#welcome-msg {
+  padding-right: 10px;
+  border-right: 1px solid white;
+
+}
+
+#logout-link {
+  display: inline-block;
+  margin-left: 10px;
+  color:white;
+  text-decoration: underline;
+}
+
+
+.top-nav {
+  flex-grow: 1;
+  /*flex-shrink: 1;*/
+}
+
+.avatar {
+    background: white;
+    margin-left: 20px;
+    margin-right:10px;
+    color:#333C4D;
+    border-radius: 15%;
+    padding-left: 8px;
+    padding-top:5px;
+    width: 38px;
+    height:38px;
+}
+
+/**
+ *  main container
+ **/
+.container {
+
+  max-width: 1000px;
+  min-width: 600px;
+  margin:60px auto;
+}
+
+.container > header{
+  height:250px;
+  display: flex;
+  align-items: center;
+  background-image: url(http://eudreamvilla.com/wp-content/uploads/2017/10/romantic-dinner.jpg);
+  background-size: 100%;
+  color:white;
+}
+
+.container header > p {
+  border-left:2px solid white;
+  margin-left:220px;
+  padding-left:5px;
+  font-size: 2em;
+  font-weight: 400;
+}
+
+.container>header span {
+  color:#FBAF41
+}
+
+.main-section {
+  background-color:#F3BB43;
+  min-height: 250px;
+  min-height: 250px;
+}
+/** 
+ *  FORM
+ **/
+
+.form{
+  display: block;
+  color:#624630;
+  margin: 0px auto;
+  padding:40px;
+  overflow: auto;
+  width:350px;
+}
+
+.form input {
+  display:block;
+  border:none;
+  width:100%;
+  padding: 8px;
+  margin-bottom: 10px;
+}
+
+.form .rightbutton{
+  cursor:pointer;
+  float:right;
+  padding:8px 20px;
+    text-align: right;
+}
+
+.form .leftbutton {
+    cursor:pointer;
+    float: left;
+    padding: 8px 10px;
+    text-align: left;
+}
+
+
+.form .form_result{
+    clear: both;
+	color: #990000;
+	padding-top: 10px;
+}
+/**
+ * LOGIN FORM
+ **/
+
+
+
+
+/**
+ *  ITEM LIST
+ **/
+#item-nav {
+  float:left;
+  width:180px;
+}
+
+.nav-icon {
+    color: #624630;
+    padding: 20px;
+    text-align: center;
+}
+
+
+.main-nav-btn {
+  border-top: 1px solid #FFFFFF;
+  padding:20px;
+    display:block;
+    text-decoration: none;
+    color:white;
+}
+
+.main-nav-btn i {
+  width:20px;
+}
+
+.main-nav .active {
+  background-color: #F2EBD9;
+  color:#624630;
+}
+
+#item-list {
+    background-color: #F2EBD9;
+    color: #624630;
+    margin-left: 180px;
+    padding: 10px;
+    min-height: 250px;
+}
+
+.item {
+    align-items: center;
+    border-bottom: 1px solid white;
+    display: flex;
+    margin: 10px;
+    padding: 15px;
+    transition: background-color 100ms cubic-bezier(0.45, 0.05, 0.55, 0.95)
+}
+
+.item img {
+    border: 1px solid white;
+    height: 80px;
+    width: 80px;
+}
+
+.item >div:first-of-type {
+    flex:1;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.item-address {
+    line-height: 20px;
+    padding-right: 20px;
+    text-align: right;
+}
+
+.fav-link{
+    border-left: 1px solid white;
+    cursor: pointer;
+    line-height: 60px;
+    text-align: center;
+    width: 60px;
+    
+}
+
+
+footer {
+  font-size: 0.8em;
+}
+
+footer .title {
+  padding:15px;
+  font-size: 1.2em;
+}
+
+footer a {
+  text-decoration: none;
+  color:#99BAD2;
+}
+
+footer p {
+  text-align: center;
+}
+footer a {
+  text-align: center;
+}
+
+footer ul{
+  list-style: none;
+  display: flex;
+  align-items: center;
+  padding: 20px;
+}
+
+footer ul li {
+  flex:1;
+}
+/* for sidebar*/
+

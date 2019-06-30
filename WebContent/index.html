@@ -1,0 +1,145 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="description" content="Event Recommendation">
+  <meta name="author" content="Jianghong Ying">
+  <title>Jianghong Event Recommendation</title>
+  <script src="https://kit.fontawesome.com/fb6e216eda.js"></script>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+  <header class="top-header">
+    <nav class="top-nav">
+      <a href="#">Home</a>
+      <a href="#">Contact</a>
+      <a href="#">About</a>
+    </nav>
+    <span id="welcome-msg"></span>
+    <a id="logout-link" href="logout" style="display:none">Logout</a>
+    <i id="avatar" class="avatar fa fa-user fa-2x" style="display:none"></i>
+  </header>
+  
+  <div class="container">
+    <header>
+      <p>
+        <span>Smart</span>
+        <br /> Hedonism
+      </p>
+    </header>
+
+    <section class="main-section">
+        
+      <div id="login-form" class="form">
+        <label for="username">Username:</label>
+        <input id="username" name="username" type="text">
+        <label for="password">Password:</label>
+        <input id="password" name="password" type="password">
+        <button id="register-form-btn" class = "leftbutton">New User? Register</button>
+        <button id="login-btn" class = "rightbutton">Login</button>
+        <p id="login-error" class = "form_result"></p>
+      </div>
+        
+     <div id="register-form" class="form" style="display: none">
+        <label for="username">Username: *</label>
+        <input id="register-username" name="username" type="text">
+        <label for="password">Password: *</label>
+        <input id="register-password" name="password" type="password">
+        <label for="first-name">First Name: *</label>
+        <input id="register-first-name" name="first-name" type="text">
+        <label for="last-name">Last Name: *</label>
+        <input id="register-last-name" name="last-name" type="text">
+        <button id="login-form-btn" class = "leftbutton">Back to Login</button>
+        <button id="register-btn" class = "rightbutton">Register</button>
+        <p id="register-result" class = "form_result"></p>
+      </div>
+
+      <aside id="item-nav" style="display:none">
+        <div class="nav-icon">
+          <i class="fa fa-sitemap fa-2x"></i>
+        </div>
+        <nav class="main-nav">
+          <a href="#" id="nearby-btn" class="main-nav-btn active">
+            <i class="fa fa-map-marker"></i> Nearby
+          </a>
+          <a href="#" id="fav-btn" class="main-nav-btn">
+            <i class="fa fa-heart"></i> My Favorites
+          </a>
+          <a href="#" id="recommend-btn" class="main-nav-btn">
+            <i class="fa fa-thumbs-up"></i> Recommendation
+          </a>
+        </nav>
+      </aside>
+
+      <ul id="item-list" style="display:none">
+        <li class="item">
+          <img alt="item image" src="https://s3-media3.fl.yelpcdn.com/bphoto/EmBj4qlyQaGd9Q4oXEhEeQ/ms.jpg" />
+          <div>
+            <a class="item-name" href="#">Item</a>
+            <p class="item-category">Vegetarian</p>
+            <div class="stars">
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+            </div>
+          </div>
+          <p class="item-address">699 Calderon Ave<br/>Mountain View<br/> CA</p>
+          <div class="fav-link">
+            <i class="fa fa-heart"></i>
+          </div>
+        </li>
+      </ul>
+    </section>
+  </div>
+  
+  <footer>
+    <p class="title">About Jianghong Ying</p>
+    <p>"Hire me before it's too late!"</p>
+    <ul>
+      
+      <li>
+      <a href="https://www.linkedin.com/in/jianghong-ying-8756b7119/" target="_blank" >
+        <p><i class="fab fa-linkedin-in fa-2x"></i></p>
+        <p>LinkedIn</p>
+      </a>
+      </li>
+   
+         <li>
+      <a href="https://github.com/jianghoy" target="_blank" >
+        <p><i class="fab fa-github fa-2x"></i></p>
+        <p>github</p>
+        </a>
+      </li>   
+     
+      <li>
+      <a herf="mailto:YJianghong@gmail.com" target="_blank" >
+        <p><i class="fa fa-envelope-o fa-2x"></i></p>
+        <p>Jianghong@gmail.com</p>
+      </a>
+      </li>
+      
+      
+
+    
+      <li>
+        <p><i class="fa fa-phone fa-2x"></i></p>
+        <p>+1 (734)-277-7864</p>
+      </li>
+    </ul>
+  </footer>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-140153635-1"></script>
+<script>
+ window.dataLayer = window.dataLayer || [];
+ function gtag(){dataLayer.push(arguments);}
+ gtag('js', new Date());
+
+ gtag('config', 'UA-140153635-1');
+</script>
+  <script src="https://rawgit.com/emn178/js-md5/master/build/md5.min.js"></script>
+  <script src="scripts/main.js"></script>
+</body>
+</html>
