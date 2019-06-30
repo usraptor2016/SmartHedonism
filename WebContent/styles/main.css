@@ -76,17 +76,18 @@ ul{
  **/
 .container {
 
-  max-width: 1000px;
+  max-width: 1400px;
   min-width: 600px;
   margin:60px auto;
 }
 
 .container > header{
-  height:250px;
+  height:550px;
   display: flex;
   align-items: center;
-  background-image: url(http://eudreamvilla.com/wp-content/uploads/2017/10/romantic-dinner.jpg);
-  background-size: 100%;
+  background-image: url(https://assets.visitphilly.com/wp-content/uploads/2018/02/The-Philadelphia-Orchestra-Yannick-J.Griffin-VP-2200x1237.jpg);
+
+  object-fit: contain;
   color:white;
 }
 
@@ -105,7 +106,8 @@ ul{
 .main-section {
   background-color:#F3BB43;
   min-height: 250px;
-  min-height: 250px;
+  min-height: 400px;
+    display: flex;
 }
 /** 
  *  FORM
@@ -117,7 +119,7 @@ ul{
   margin: 0px auto;
   padding:40px;
   overflow: auto;
-  width:350px;
+  width:400px;
 }
 
 .form input {
@@ -190,7 +192,8 @@ ul{
 #item-list {
     background-color: #F2EBD9;
     color: #624630;
-    margin-left: 180px;
+    min-width: 600px;
+    flex:1;
     padding: 10px;
     min-height: 250px;
 }
@@ -228,6 +231,18 @@ ul{
     line-height: 60px;
     text-align: center;
     width: 60px;
+    
+}
+
+/**
+ *  MAP
+ **/
+#map {
+    min-width: 150px;
+    min-height: 150px;
+    max-width: 400px;
+    max-height:400px;
+    flex:1;
     
 }
 

@@ -7,6 +7,9 @@
   var user_fullname = 'John';
   var lng = -122.08;
   var lat = 37.38;
+  var map;
+
+
 
   /**
    * Initialize major event handlers
@@ -59,6 +62,7 @@
     var avatar = document.querySelector('#avatar');
     var welcomeMsg = document.querySelector('#welcome-msg');
     var logoutBtn = document.querySelector('#logout-link');
+    //var map = document.querySelector('map');
 
     welcomeMsg.innerHTML = 'Welcome, ' + user_fullname;
 
@@ -68,6 +72,7 @@
     showElement(avatar);
     showElement(welcomeMsg);
     showElement(logoutBtn, 'inline-block');
+    //showElement(map);
     hideElement(loginForm);
     hideElement(registerForm);// we don't have that -- for now
 
@@ -82,6 +87,7 @@
     var avatar = document.querySelector('#avatar');
     var welcomeMsg = document.querySelector('#welcome-msg');
     var logoutBtn = document.querySelector('#logout-link');
+    //var map = document.querySelector('map');
 
     hideElement(itemNav);
     hideElement(itemList);
@@ -89,6 +95,7 @@
     hideElement(logoutBtn);
     hideElement(welcomeMsg);
     hideElement(registerForm);
+    //hideElement(map);
 
     clearLoginError();
     showElement(loginForm);
@@ -111,6 +118,7 @@
     var avatar = document.querySelector('#avatar');
     var welcomeMsg = document.querySelector('#welcome-msg');
     var logoutBtn = document.querySelector('#logout-link');
+    //var map = document.querySelector('map');
 
     hideElement(itemNav);
     hideElement(itemList);
@@ -118,6 +126,7 @@
     hideElement(logoutBtn);
     hideElement(welcomeMsg);
     hideElement(loginForm);
+    //hideElement(map);
 
     clearRegisterResult();
     showElement(registerForm);
@@ -141,6 +150,10 @@
     lat = position.coords.latitude;
     lng = position.coords.longitude;
 
+    map.setCenter({
+    	lat:lat,
+    	lng:lng    
+    });
     loadNearbyItems();
   }
 
@@ -166,6 +179,19 @@
       loadNearbyItems();
     });
   }
+  
+  //
+  // Google Map API
+  //
+	function initMap() {
+		map = new google.maps.Map(document.getElementById('map'), {
+			center : {
+				lat : 37,
+				lng : -122
+			},
+			zoom : 8
+		});
+	}
 
   // -----------------------------------
   // Login
