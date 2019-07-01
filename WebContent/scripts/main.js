@@ -7,7 +7,7 @@
   var user_fullname = 'John';
   var lng = -122.08;
   var lat = 37.38;
-
+  var markers = [];
   /**
    * Initialize major event handlers
    */
@@ -71,8 +71,7 @@
     showElement(logoutBtn, 'inline-block');
     showElement(map);
     hideElement(loginForm);
-    hideElement(registerForm);// we don't have that -- for now
-
+    hideElement(registerForm);
     initGeoLocation();
   }
 
@@ -637,11 +636,16 @@
   }
 
 
-
+  /**
+   *  GOOGLE MAP FUNCTIONS
+   */
+  
+  /**
+   *  used to add marker corresponding to item
+   *  @input: item: JSON including location info
+   *  @Output: add a marker onto map 
+   */
   function addMarker(item) {
-    //var map = document.querySelector('#map');
-    //var address = item.address;
-    //geocoder.geocode({'address': address}, function(results, status) {
     var marker = new google.maps.Marker({
         map: map,
         position:{
@@ -650,14 +654,31 @@
         },
         title:item.name,
       });
-//      if (status === 'OK') {
-//        
-//      } else {
-//        alert('Geocode was not successful for the following reason: ' + status);
-//      }
-//    });
+    markers.push(marker);
   }
 
+  // Sets the map on all markers in the array.
+  function setMapOnAll(map) {
+    for (var i = 0; i < markers.length; i++) {
+      markers[i].setMap(map);
+    }
+  }
+
+  //Removes the markers from the map, but keeps them in the array.
+  function clearMarkers() {
+    setMapOnAll(null);
+  }
+
+  // Shows any markers currently in the array.
+  function showMarkers() {
+    setMapOnAll(map);
+  }
+
+  // Deletes all markers in the array by removing references to them.
+  function deleteMarkers() {
+    clearMarkers();
+    markers = [];
+  }
   init();
 
 })();
