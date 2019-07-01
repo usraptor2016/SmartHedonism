@@ -93,7 +93,19 @@
         </li>
       </ul>
 
-<!-- 			<div id="map" style="display:block"></div>-->
+ 			<div id="map" style="display:none"></div>
+        
+    <script>
+      var map;
+      function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: -34.397, lng: 150.644},
+          zoom: 8
+        });
+      }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBKwpE8LR6G7jQYa1Dh14AbYCQDIML2DCo&callback=initMap"
+    async defer></script>
 			
 		</section>
       
