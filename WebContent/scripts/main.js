@@ -632,6 +632,25 @@
 
     li.appendChild(favLink);
     itemList.appendChild(li);
+
+    //addMarker(geocoder,item);
+  }
+
+
+
+  function addMarker(geocoder,item) {
+    var map = document.querySelector('#map');
+    var address = item.address;
+    geocoder.geocode({'address': address}, function(results, status) {
+      if (status === 'OK') {
+        var marker = new google.maps.Marker({
+          map: map,
+          position: results[0].geometry.location
+        });
+      } else {
+        alert('Geocode was not successful for the following reason: ' + status);
+      }
+    });
   }
 
   init();
