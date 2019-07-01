@@ -70,6 +70,7 @@
     showElement(welcomeMsg);
     showElement(logoutBtn, 'inline-block');
     showElement(map);
+    setPosition(map,'sticky');
     hideElement(loginForm);
     hideElement(registerForm);// we don't have that -- for now
 
@@ -102,6 +103,11 @@
     element.style.display = 'none';
   }
 
+  function setPosition(element,pos) {
+	  var position = pos ? pos: 'relative';
+	  element.style.position = position;			  
+  }
+  
   function showElement(element, style) {
     var displayStyle = style ? style : 'block';
     element.style.display = displayStyle;

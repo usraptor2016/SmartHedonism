@@ -31,7 +31,7 @@ ul{
   position: fixed;
   width:100%;
   top:0px;
-    z-index: 10;
+  z-index: 10;
 }
 
 .top-header a{
@@ -106,9 +106,7 @@ ul{
 
 .main-section {
   background-color:#F3BB43;
-  min-height: 250px;
-  min-height: 400px;
-    display: flex;
+  display: flex;
 }
 /** 
  *  FORM
@@ -244,6 +242,7 @@ ul{
     max-width: 400px;
     max-height:400px;
     flex:1;
+    top:60px;
     
 }
 
