@@ -102,6 +102,12 @@ public class TicketMasterAPI {
 			if (!event.isNull("distance")) {
 				builder.setDistance(event.getDouble("distance"));
 			}
+			// add location:lat,lng into builder
+			if (!event.isNull("location")) {
+				JSONObject latlng = event.getJSONObject("location");
+				builder.setLat(latlng.getDouble("latitude"))
+				       .setLng(latlng.getDouble("longitude"));
+			}
 			
 			builder.setAddress(getAddress(event)).setCategories(getCategories(event))
 			       .setImageUrl(getImageUrl(event));

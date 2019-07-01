@@ -144,7 +144,9 @@ public class MongoDBConnection implements DBConnection {
         		.insertOne(new Document().append("item_id", item.getItemId()).append("distance", item.getDistance())
         				.append("name", item.getName()).append("address", item.getAddress())
         				.append("url", item.getUrl()).append("image_url", item.getImageUrl())
-        				.append("rating", item.getRating()).append("categories", item.getCategories()));
+        				.append("rating", item.getRating()).append("categories", item.getCategories())
+        				.append("lat", item.getLat()).append("lng", item.getLng())
+        				);
         	}
         } catch (Exception e) {
         	e.printStackTrace();
