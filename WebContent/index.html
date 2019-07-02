@@ -96,10 +96,11 @@
  			<div id="map" style="display:none"></div>
         
     <script>
-      var map;
+      var googlemap;
+      var markers = [];
       //var geocoder;
       function initMap() {
-        map = new google.maps.Map(document.getElementById('map'), {
+        googlemap = new google.maps.Map(document.getElementById('map'), {
           center: {lat: -34.397, lng: 150.644},
           zoom: 8
         });

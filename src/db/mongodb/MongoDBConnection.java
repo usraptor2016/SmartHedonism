@@ -93,6 +93,8 @@ public class MongoDBConnection implements DBConnection {
 				builder.setRating(doc.getDouble("rating"));
 				builder.setDistance(doc.getDouble("distance"));
 				builder.setCategories(getCategories(itemId));
+				builder.setLat(doc.getDouble("lat"));
+				builder.setLng(doc.getDouble("lng"));
 				
 				favoriteItemSet.add(builder.build());
 			}

@@ -7,7 +7,7 @@
   var user_fullname = 'John';
   var lng = -122.08;
   var lat = 37.38;
-  var markers = [];
+  //var markers = [];
   /**
    * Initialize major event handlers
    */
@@ -146,7 +146,7 @@
     lat = position.coords.latitude;
     lng = position.coords.longitude;
 
-    map.setCenter({
+    googlemap.setCenter({
     	lat:lat,
     	lng:lng
     });
@@ -381,6 +381,7 @@
    * /search?user_id=1111&lat=37.38&lon=-122.08
    */
   function loadNearbyItems() {
+	deleteMarkers();  
     console.log('loadNearbyItems');
     activeBtn('nearby-btn');
 
@@ -415,6 +416,7 @@
    * /history?user_id=1111
    */
   function loadFavoriteItems() {
+	deleteMarkers();  
     activeBtn('fav-btn');
 
     // request parameters
@@ -443,6 +445,7 @@
    * /recommendation?user_id=1111
    */
   function loadRecommendedItems() {
+	  deleteMarkers();
     activeBtn('recommend-btn');
 
     // request parameters
@@ -647,13 +650,14 @@
    */
   function addMarker(item) {
     var marker = new google.maps.Marker({
-        map: map,
+        map: googlemap,
         position:{
           lat:item.lat,
           lng:item.lng
         },
         title:item.name,
       });
+    marker.setMap(googlemap);
     markers.push(marker);
   }
 
@@ -671,7 +675,7 @@
 
   // Shows any markers currently in the array.
   function showMarkers() {
-    setMapOnAll(map);
+    setMapOnAll(googlemap);
   }
 
   // Deletes all markers in the array by removing references to them.
@@ -679,6 +683,7 @@
     clearMarkers();
     markers = [];
   }
+  
   init();
 
 })();
