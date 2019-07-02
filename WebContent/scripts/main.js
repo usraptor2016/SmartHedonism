@@ -637,7 +637,7 @@
 
     // add marker onto google map
     var marker = addMarker(item);
-    // TODO:
+
     // add hover effect
     li.addEventListener("mouseenter",function() {
       activateBounce(marker);
