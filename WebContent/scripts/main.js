@@ -175,6 +175,10 @@
         var loc = result.loc.split(',');
         lat = loc[0];
         lng = loc[1];
+        googlemap.setCenter({
+        	lat:parseFloat(lat),
+        	lng:parseFloat(lng)
+        });
       } else {
         console.warn('Getting location by IP failed.');
       }
