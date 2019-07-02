@@ -16,6 +16,8 @@ public class Item {
 	private String imageUrl;
 	private String url;
 	private double distance;
+	private double lat;
+	private double lng;
 	
 	public static class ItemBuilder {
 		
@@ -27,6 +29,8 @@ public class Item {
 		private String imageUrl;
 		private String url;
 		private double distance;
+		private double lat;
+		private double lng;
 		
 		public ItemBuilder setItemId(String itemId) {
 			this.itemId = itemId;
@@ -60,7 +64,14 @@ public class Item {
 			this.distance = distance;
 			return this;
 		}
-		
+		public ItemBuilder setLat(double lat) {
+			this.lat = lat;
+			return this;
+		}
+		public ItemBuilder setLng(double lng) {
+			this.lng = lng;
+			return this;
+		}
 		public Item build() {
 			return new Item(this);
 		}
@@ -76,6 +87,8 @@ public class Item {
 		this.imageUrl = builder.imageUrl;
 		this.url = builder.url;
 		this.distance = builder.distance;
+		this.lat = builder.lat;
+		this.lng = builder.lng;
 	}
 
 	
@@ -104,6 +117,12 @@ public class Item {
 	public double getDistance() {
 		return distance;
 	}
+	public double getLat() {
+		return lat;
+	}
+	public double getLng() {
+		return lng;
+	}
 	
 
 
@@ -118,6 +137,8 @@ public class Item {
 			obj.put("image_url", imageUrl);
 			obj.put("url", url);
 			obj.put("distance", distance);
+			obj.put("lat", lat);
+			obj.put("lng", lng);
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}

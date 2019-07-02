@@ -104,7 +104,7 @@ public class TicketMasterAPI {
 			}
 			
 			builder.setAddress(getAddress(event)).setCategories(getCategories(event))
-			       .setImageUrl(getImageUrl(event));
+			       .setImageUrl(getImageUrl(event)).setLat(getLat(event)).setLng(getLng(event));
 			
 			items.add(builder.build());
 		}
@@ -123,6 +123,44 @@ public class TicketMasterAPI {
 		} catch (Exception e) {
 	                  e.printStackTrace();
 		}
+	}
+	
+	private double getLat(JSONObject event) throws JSONException {
+		if (!event.isNull("_embedded")) {
+			JSONObject embedded = event.getJSONObject("_embedded");
+			if (!embedded.isNull("venues")) {
+				JSONArray venues = embedded.getJSONArray("venues");
+				for (int i = 0 ; i < venues.length();i++) {
+					JSONObject venue = venues.getJSONObject(i);
+				    if (!venue.isNull("location")) {
+				    	JSONObject location = venue.getJSONObject("location");
+				    	if (!location.isNull("latitude")) {
+				    		return location.getDouble("latitude");
+				    	}
+				    }
+				}
+			}
+		}
+		return 0;
+	}
+	
+	private double getLng(JSONObject event) throws JSONException {
+		if (!event.isNull("_embedded")) {
+			JSONObject embedded = event.getJSONObject("_embedded");
+			if (!embedded.isNull("venues")) {
+				JSONArray venues = embedded.getJSONArray("venues");
+				for (int i = 0 ; i < venues.length();i++) {
+					JSONObject venue = venues.getJSONObject(i);
+				    if (!venue.isNull("location")) {
+				    	JSONObject location = venue.getJSONObject("location");
+				    	if (!location.isNull("longitude")) {
+				    		return location.getDouble("longitude");
+				    	}
+				    }
+				}
+			}
+		}
+		return 0;
 	}
 	
 	private String getAddress(JSONObject event) throws JSONException {

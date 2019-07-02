@@ -7,7 +7,7 @@
   var user_fullname = 'John';
   var lng = -122.08;
   var lat = 37.38;
-
+  var markers = [];
   /**
    * Initialize major event handlers
    */
@@ -72,8 +72,7 @@
     showElement(map);
     setPosition(map,'sticky');
     hideElement(loginForm);
-    hideElement(registerForm);// we don't have that -- for now
-
+    hideElement(registerForm);
     initGeoLocation();
   }
 
@@ -153,7 +152,7 @@
     lat = position.coords.latitude;
     lng = position.coords.longitude;
 
-    map.setCenter({
+    googlemap.setCenter({
     	lat:lat,
     	lng:lng
     });
@@ -388,6 +387,7 @@
    * /search?user_id=1111&lat=37.38&lon=-122.08
    */
   function loadNearbyItems() {
+	deleteMarkers();
     console.log('loadNearbyItems');
     activeBtn('nearby-btn');
 
@@ -422,6 +422,7 @@
    * /history?user_id=1111
    */
   function loadFavoriteItems() {
+	deleteMarkers();
     activeBtn('fav-btn');
 
     // request parameters
@@ -450,6 +451,7 @@
    * /recommendation?user_id=1111
    */
   function loadRecommendedItems() {
+	  deleteMarkers();
     activeBtn('recommend-btn');
 
     // request parameters
@@ -639,24 +641,70 @@
     li.appendChild(favLink);
     itemList.appendChild(li);
 
-    //addMarker(geocoder,item);
+    // add marker onto google map
+    var marker = addMarker(item);
+
+    // add hover effect
+    li.addEventListener("mouseenter",function() {
+      activateBounce(marker);
+    });
+    li.addEventListener("mouseleave",function() {
+    	deactivateBounce(marker);
+      });
   }
 
 
+  /**
+   *  GOOGLE MAP FUNCTIONS
+   */
 
-  function addMarker(geocoder,item) {
-    var map = document.querySelector('#map');
-    var address = item.address;
-    geocoder.geocode({'address': address}, function(results, status) {
-      if (status === 'OK') {
-        var marker = new google.maps.Marker({
-          map: map,
-          position: results[0].geometry.location
-        });
-      } else {
-        alert('Geocode was not successful for the following reason: ' + status);
-      }
-    });
+  /**
+   *  used to add marker corresponding to item
+   *  @input: item: JSON including location info
+   *  @Output: add a marker onto map
+   */
+  function addMarker(item) {
+	  var marker = new google.maps.Marker({
+		  map: googlemap,
+		  position:{
+			  lat:item.lat,
+			  lng:item.lng
+		  },
+		  title:item.name,
+	  });
+	  marker.setMap(googlemap);
+	  markers.push(marker);
+	  return marker;
+  }
+
+  function activateBounce(marker) {
+	  marker.setAnimation(google.maps.Animation.BOUNCE);
+  }
+  function deactivateBounce(marker) {
+	  marker.setAnimation(null);
+  }
+
+  // Sets the map on all markers in the array.
+  function setMapOnAll(map) {
+    for (var i = 0; i < markers.length; i++) {
+      markers[i].setMap(map);
+    }
+  }
+
+  //Removes the markers from the map, but keeps them in the array.
+  function clearMarkers() {
+    setMapOnAll(null);
+  }
+
+  // Shows any markers currently in the array.
+  function showMarkers() {
+    setMapOnAll(googlemap);
+  }
+
+  // Deletes all markers in the array by removing references to them.
+  function deleteMarkers() {
+    clearMarkers();
+    markers = [];
   }
 
   init();
