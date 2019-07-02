@@ -7,7 +7,7 @@
   var user_fullname = 'John';
   var lng = -122.08;
   var lat = 37.38;
-  //var markers = [];
+  var markers = [];
   /**
    * Initialize major event handlers
    */
@@ -381,7 +381,7 @@
    * /search?user_id=1111&lat=37.38&lon=-122.08
    */
   function loadNearbyItems() {
-	deleteMarkers();  
+	deleteMarkers();
     console.log('loadNearbyItems');
     activeBtn('nearby-btn');
 
@@ -416,7 +416,7 @@
    * /history?user_id=1111
    */
   function loadFavoriteItems() {
-	deleteMarkers();  
+	deleteMarkers();
     activeBtn('fav-btn');
 
     // request parameters
@@ -635,30 +635,47 @@
     li.appendChild(favLink);
     itemList.appendChild(li);
 
-    addMarker(item);
+    // add marker onto google map
+    var marker = addMarker(item);
+    // TODO:
+    // add hover effect
+    li.addEventListener("mouseenter",function() {
+      activateBounce(marker);
+    });
+    li.addEventListener("mouseleave",function() {
+    	deactivateBounce(marker);
+      });
   }
 
 
   /**
    *  GOOGLE MAP FUNCTIONS
    */
-  
+
   /**
    *  used to add marker corresponding to item
    *  @input: item: JSON including location info
-   *  @Output: add a marker onto map 
+   *  @Output: add a marker onto map
    */
   function addMarker(item) {
-    var marker = new google.maps.Marker({
-        map: googlemap,
-        position:{
-          lat:item.lat,
-          lng:item.lng
-        },
-        title:item.name,
-      });
-    marker.setMap(googlemap);
-    markers.push(marker);
+	  var marker = new google.maps.Marker({
+		  map: googlemap,
+		  position:{
+			  lat:item.lat,
+			  lng:item.lng
+		  },
+		  title:item.name,
+	  });
+	  marker.setMap(googlemap);
+	  markers.push(marker);
+	  return marker;
+  }
+
+  function activateBounce(marker) {
+	  marker.setAnimation(google.maps.Animation.BOUNCE);
+  }
+  function deactivateBounce(marker) {
+	  marker.setAnimation(null);
   }
 
   // Sets the map on all markers in the array.
@@ -683,7 +700,7 @@
     clearMarkers();
     markers = [];
   }
-  
+
   init();
 
 })();
